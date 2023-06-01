@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import Auth from "./pages/Auth";
+//pages
+import AuthPage from "./pages/AuthPage";
+import LandingPage from './pages/LandingPage';
 
 //functions
 import { getTest } from './functions/test';
@@ -35,7 +37,9 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/auth" element={<Auth />} />
+                <Route path="/" element={<LandingPage />} />
+
+                <Route path="/auth" element={<AuthPage />} />
             </Routes>
         </BrowserRouter>
     )

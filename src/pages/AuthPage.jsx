@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import "../styles/Auth.css"
+import "../styles/AuthPage.css"
 import axios from "axios"
 
-function Auth () {
+function AuthPage () {
     const apiUrl = process.env.REACT_APP_API_URL;
     const [authMode, setAuthMode] = useState("signin");
     const [formDataSignIn, setFormDataSignIn] = useState({
@@ -154,4 +154,4 @@ function Auth () {
     )
 }
 
-export default Auth;
+export default AuthPage;
