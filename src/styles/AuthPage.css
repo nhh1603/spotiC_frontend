@@ -4,6 +4,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: black;
 }
   
 .Auth-form {
@@ -12,7 +13,15 @@
     padding-top: 30px;
     padding-bottom: 20px;
     border-radius: 8px;
-    background-color: white;
+    background-color: #1DB954;
+}
+
+.Auth-form > * {
+    background-color: inherit;
+}
+
+.Auth-form > * > * {
+    background-color: inherit;
 }
   
 .Auth-form-content {
@@ -32,4 +41,16 @@
     color: blue;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.mt-3 label{
+    background-color: inherit;
+}
+
+.mt-2 a {
+    background-color: inherit;
+}
+
+.text-center span {
+    background-color: inherit;
 }
