@@ -17,7 +17,7 @@ const NotFoundPage = () => {
 			<div className="not-found-content">
                 <h1>Page Not Found</h1>
                 <p>We cannot find the page that you are looking for</p>
-                <button onClick={() => navigate("/")}>Go Back Home</button>
+                <button className="btn" onClick={() => navigate("/")}>Go Back Home</button>
 			</div>
 		</div>
 	);

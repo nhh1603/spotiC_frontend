@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import AuthPage from "./pages/AuthPage";
 import LandingPage from './pages/LandingPage';
 import NotFoundPage from './pages/NotFoundPage';
+import SignUpPage from './pages/SignUpPage';
 
 //functions
 
@@ -17,6 +18,8 @@ function App() {
             <Route path="/" element={<LandingPage />} />
 
             <Route path="/auth" element={<AuthPage />} />
+
+            <Route path="/signup" element={<SignUpPage />} />
 
             <Route path="/not-found" element={<NotFoundPage />} />
 
