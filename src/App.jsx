@@ -1,31 +1,50 @@
 import './App.css';
+import { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Routes, Route, Navigate } from "react-router-dom"
-import { useDispatch } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 //pages
 import AuthPage from "./pages/AuthPage";
 import LandingPage from './pages/LandingPage';
-import NotFoundPage from './pages/NotFoundPage';
-import SignUpPage from './pages/SignUpPage';
+// import Homepage from './pages/Homepage'
 
 //functions
+import { getTest } from './functions/test';
 
+/*
 function App() {
 
+    const [data, setData] = useState("Hello World!");
+
+    useEffect(() => {
+        getTest()
+            .then(data => setData(data.message))
+            .catch(error => console.log(error));
+    }, []);
+
     return (
-        <Routes>
-            <Route path="/" element={<LandingPage />} />
+        <div className="App">
+            <header className="App-header">
+                <p>
+                    {data}
+                </p>
+            </header>
+        </div>
+    );
+}
+*/
 
-            <Route path="/auth" element={<AuthPage />} />
+function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
 
-            <Route path="/signup" element={<SignUpPage />} />
-
-            <Route path="/not-found" element={<NotFoundPage />} />
-
-            <Route path="*" element={<Navigate to="/not-found" />} />
-            
-        </Routes>
+                <Route path="/auth" element={<AuthPage />} />
+                
+                {/* <Route path="/homepage" element={<Homepage />} /> */}
+            </Routes>
+        </BrowserRouter>
     )
 }
 

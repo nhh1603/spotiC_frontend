@@ -6,17 +6,17 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Provider } from "react-redux"; // Redux
-import { legacy_createStore as createStore, applyMiddleware, compose } from "redux"; // Redux
-import thunk from "redux-thunk"; // Redux
-import reducers from "./reducers"; 
+// import { Provider } from "react-redux"; // Redux
+// import { legacy_createStore as createStore, applyMiddleware, compose } from "redux"; // Redux
+// import thunk from "redux-thunk"; // Redux
+// import reducers from "./reducers"; 
 
-const store = createStore(reducers, compose(applyMiddleware(thunk)));
+// const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    {/* <Provider store={store}> */}
         <BrowserRouter>
             <App />
             <ToastContainer
@@ -29,6 +29,6 @@ root.render(
 		    />
         </BrowserRouter>
         
-    </Provider>
+    {/* </Provider> */}
   </React.StrictMode>
 );

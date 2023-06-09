@@ -1,0 +1,141 @@
+.playbar-component {
+  background-color: rgb(22, 22, 41);
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1%;
+  /* color: #82aacb; */
+}
+
+.playbar-musicCover {
+  border-radius: 10%;
+  display: block;
+  width: 4em;
+  height: 4em;
+}
+
+.playbar-title-container{
+  margin-left: 1em; 
+  width: 8.2em; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.playbar-title-container h3{
+  font-size: 1.5em;
+}
+
+.playbar-title-container p{
+  font-size: 1em;
+}
+
+.playbar-title {
+  margin-top: 1.2em;
+  text-align: center;
+  height: 50%;
+  color: #82aacb;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.playbar-subtitle {
+  
+  color: #625e5e;
+  text-align: center;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.playbar-overflow:hover{
+  animation: marquee 3s linear infinite; 
+}
+
+.playbar-playButton-group{
+  background-color: rgb(22, 22, 41);
+  align-items: center;
+  border: none;
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+}
+
+.playbar-playButton {
+  background: none;
+  border: none;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+}
+
+.playbar-likeButtom {
+  margin-left: 1rem; 
+  background: none;
+  border: none;
+  align-items: center;
+  position: absolute;
+  left: 13%;
+  top: 40%;
+  cursor: pointer;
+}
+
+.playbar-timeContainer {
+  position: absolute;
+  left: 35%;
+  top: 55%;
+  transform: translateX(-50%);
+
+}
+
+.playbar-timeContainer p{
+  font-size: smaller;
+}
+
+.playbar-time {
+  width: 400%;
+  align-items: center;
+  display: flex;
+  justify-content:space-between;
+  color: #828282;
+}
+
+.playbar-timeline {
+  width: 100%;
+  align-items: center;
+  background-color: #27ae60;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  background-color: #27ae60;
+  
+}
+
+@media (max-width: 100%) {
+  .component {
+    width: 50%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-120%);
+  }
+}
