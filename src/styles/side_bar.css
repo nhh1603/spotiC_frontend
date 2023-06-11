@@ -1,0 +1,78 @@
+
+
+.sidebar-open {
+  transform: translateX(0);
+  background: #191414;
+  color: #fff;
+  min-width: 200px;
+  width: 20%;
+  transition: transform 0.3s ease;
+  z-index: 100;
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 15px;
+  color: white;
+}
+
+.menu-icon span {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.main-content {
+  flex-grow: 1;
+  background-color: #191414;
+  color: white;
+  overflow: auto;
+  transition: padding 0.3s ease;
+  padding: 30px;
+}
+
+.sidebar-open .main-content {
+  padding-left: 230px;
+}
+
+.playlist-line {
+  height: 1px;
+  width: 180px;
+  background-color: var(--text-subdued, #6a6a6a);
+  margin-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.sidebar-playlist{
+  margin: 10px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+.sidebar-playlist-name{
+  text-align: left;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--text-subdued, #6a6a6a);
+}
+.sidebar-playlist-name:hover{
+  color: white;
+}
+
+.sidebar-element{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-subdued, #6a6a6a);
+  margin: 10px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+.sidebar-element:hover{
+  color: white;
+}
