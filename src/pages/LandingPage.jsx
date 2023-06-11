@@ -8,7 +8,7 @@ function LandingPage () {
                 <h1 id="landing-h1">SpotiC</h1>
                 <h2 id="landing-h2">Where you can listen to your favorite music, free and without ads</h2>
                 <br /> <br /> 
-                <span><a href="/auth"></a></span>
+                <span><a href="/signin"></a></span>
             </div>
         </div>
     );
