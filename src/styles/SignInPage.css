@@ -1,18 +1,32 @@
-.signup-wapper{
+.signin-wapper{
     transform: translate(0, 30%);
+    margin-top: 30px;
 }
 
-.signup-container {
+.signin-container {
     color: white;
     transform: scale(1.15);
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.signin-container .signin-logo {
+    margin-bottom: 12px;
+}
+
+.signin-container .signin-logo h1 {
+    display: inline-block;
+    transform: translate(0, 5px);
+    margin-left: 5px;
+    font-weight: 700;
+    color: var(--spotify-green);
+}
+
 .signup-container .signup-logo {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .signup-container .signup-logo h1 {
@@ -27,8 +41,7 @@
     margin-bottom: 10px;
 }
 
-
-.change-to-SignIn{
+.change-to-SignUp{
     margin:5px;
     cursor: pointer;
     color: var(--spotify-green);
@@ -36,29 +49,29 @@
     font-size: medium;
 }
 
-.change-to-SignIn:hover{
+.change-to-SignUp:hover{
     color: white;
     background-color: var(--spotify-green);
     border-radius: 5px;
 }
 
-.signup-container h2 {
+.signin-container h2 {
     font-size: 18px;
     padding-bottom: 20px;
     font-weight: 700;
 }
 
-.signup-container p {
+.signin-container p {
     font-size: 14px;
     font-weight: 700;
     padding-bottom: 2px;
 }
 
-.signup-form-input {
+.signin-form-input {
     margin-bottom: 10px;
 }
 
-.signup-form-input input {
+.signin-form-input input {
     width: 300px;
     height: 30px;
     border-radius: 5px;
@@ -69,26 +82,20 @@
 
 }
 
-.signup-container .error {
+.signin-container .error {
     color: red;
     font-size: 12px;
     padding-bottom: 10px;
 }
 
-.select-gender label {
-    padding-left: 5px;
-    color: white;
-    font-weight: 400;
-}
-
-.signup-form-submit{
+.signin-form-submit{
     position: relative;
     display: flex;
     justify-content: center;
     cursor: pointer;
 }
 
-.signup-form-submit button {
+.signin-form-submit button {
     font-size: 16px;
     font-weight: 500px;
     line-height: 0px;
@@ -102,6 +109,6 @@
     white-space: nowrap;
     cursor: pointer;
 }
-.signup-form-submit button:hover{
+.signin-form-submit button:hover{
     background: var(--spotify-green);
 }

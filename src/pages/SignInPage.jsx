@@ -7,35 +7,31 @@ import passwordComplexity from "joi-password-complexity";
 import { useNavigate } from "react-router-dom";
 
 import { FaSpotify } from "react-icons/fa";
-import "../styles/SignUpPage.css";
+import "../styles/SignInPage.css";
 
 const genders = ["male", "female", "other"];
 
-const SignUpPage = () => {
+const SignInPage = () => {
     const [data, setData] = useState({
-		name: "",
 		email: "",
 		password: "",
-		gender: "",
 	});
 	const [errors, setErrors] = useState({});
 	const [isFetching, setIsFetching] = useState(false);
 
-    const schema = {
-        email: Joi.string().email({ tlds: { allow: false } }).required().label("Email"),
-        password: passwordComplexity().required().label("Password"),
-        name: Joi.string().required().label("Name"),
-        gender: Joi.string().valid("male", "female", "other").required(),
-    };
+    // const schema = {
+    //     email: Joi.string().email({ tlds: { allow: false } }).required().label("Email"),
+    //     password: passwordComplexity().required().label("Password"),
+    // };
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const handleSignUp = async (e) => {
+    const handleSignIn = async (e) => {
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
             try {
                 setIsFetching(true);
-                const url = process.env.REACT_APP_API_URL + "/submitSignUp";
+                const url = process.env.REACT_APP_API_URL + "/submitSignIn";
                 await axios.post(
                     url,
                     data
@@ -57,34 +53,37 @@ const SignUpPage = () => {
         }
     };
 
-    const handleChange = ({ currentTarget: input }) => {
-        const errorMessage = validateInput(input);
-        if (errorMessage === "") {
-            delete errors[input.name];
-        } else {
-            setErrors((errors) => ({ ...errors, [input.name]: errorMessage }));
-        }
+    // const handleChange = ({ currentTarget: input }) => {
+    //     const errorMessage = validateInput(input);
+    //     if (errorMessage === "") {
+    //         delete errors[input.name];
+    //     } else {
+    //         setErrors((errors) => ({ ...errors, [input.name]: errorMessage }));
+    //     }
         
-        setData((data) => ({ ...data, [input.name]: input.value }));
-    };
+    //     setData((data) => ({ ...data, [input.name]: input.value }));
+    // };
 
-    const validateInput = ({ name, value }) => {
-        const obj = { [name]: value };
-        const inputSchema = Joi.object({ [name]: schema[name] });
-        const { error } = inputSchema.validate(obj);
-        return error ? error.details[0].message : "";
-    };
+    // const validateInput = ({ name, value }) => {
+    //     const obj = { [name]: value };
+    //     const inputSchema = Joi.object({ [name]: schema[name] });
+    //     const { error } = inputSchema.validate(obj);
+    //     return error ? error.details[0].message : "";
+    // };
+
+    const navigate = useNavigate();
 
     const changeSignMode = () =>{
         // console.log("change to Sign Up page")
-        navigate('/signin');
+        navigate('/signup');
     }
 
+    
 
     return (
-        <div className="signup-wapper">
-            <div className="signup-container">
-                <div className="signup-logo">
+        <div className="signin-wapper">
+            <div className="signin-container">
+                <div className="signin-logo">
                     <FaSpotify 
                         className="icon"
                         size="50px"
@@ -93,38 +92,38 @@ const SignUpPage = () => {
                     <h1>SpotiC</h1>
                 </div>
                 <div className="change-sign-mode">
-                    Already registered?{" "}
-                    <span className="change-to-SignIn" onClick={changeSignMode}>
-                        Sign In
+                    Not registered yet?{" "}
+                    <span className="change-to-SignUp" onClick={changeSignMode}>
+                        Sign Up
                     </span>
                 </div>
-                <form onSubmit={handleSignUp} className="signup-form">
-                    <h2>Sign up with your email address</h2>
-                    <div className="signup-form-input">
-                        <p>What's your email?</p>
+                <form onSubmit={handleSignIn} className="signin-form">
+                    <h2>Sign in with your email address</h2>
+                    <div className="signin-form-input">
+                        <p>Email address</p>
                         <input
                             type="email"
                             className="form-control mt-1"
                             placeholder="Enter your email"
                             name="email"
                             value={data.email}
-                            onChange={handleChange}
+                            // onChange={handleChange}
                         />
                         {errors.email && <span className="error">{errors.email}</span>}
                     </div>
-                    <div className="signup-form-input">
-                        <p>Create a password</p>
+                    <div className="signin-form-input">
+                        <p>Password</p>
                         <input
                             type="password"
                             className="form-control mt-1"
-                            placeholder="Create a password"
+                            placeholder="Enter your password"
                             name="password"
                             value={data.password}
-                            onChange={handleChange}
+                            // onChange={handleChange}
                         />
                         {errors.password && <span className="error">{errors.password}</span>}
                     </div>
-                    <div className="signup-form-input">
+                    {/* <div className="signin-form-input">
                         <p>What should we call you?</p>
                         <input
                             type="text"
@@ -135,24 +134,10 @@ const SignUpPage = () => {
                             onChange={handleChange}
                         />
                         {errors.name && <span className="error">{errors.name}</span>}
-                    </div> 
-                    <div className="signup-form-input-select">
-                        <p>What's your gender?</p>
-                        {/* <input id="gender-{type="radio" name="gender" value="male"></input>
-                        <label  */}
-                        {genders.map( value => {
-                            const idGender = `gender-${value}`;
-                            return (
-                                <div className="select-gender">
-                                    <input id={idGender} name="gender" type="radio" value={value} onChange={handleChange} />
-                                    <label>{value}</label>
-                                </div>
-                            )
-                        })}
-                    </div>
-                    <div className="signup-form-submit">
+                    </div>  */}
+                    <div className="signin-form-submit">
                         <button type="submit" className="btn btn-submit">
-                            Sign Up
+                            Sign In
                         </button>
                     </div>
                 </form>
@@ -161,4 +146,4 @@ const SignUpPage = () => {
     );
 };
 
-export default SignUpPage;
+export default SignInPage;

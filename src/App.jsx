@@ -8,6 +8,7 @@ import AuthPage from "./pages/AuthPage";
 import LandingPage from './pages/LandingPage';
 import NotFoundPage from './pages/NotFoundPage';
 import SignUpPage from './pages/SignUpPage';
+import SignInPage from './pages/SignInPage';
 
 //functions
 
@@ -18,6 +19,8 @@ function App() {
             <Route path="/" element={<LandingPage />} />
 
             <Route path="/auth" element={<AuthPage />} />
+
+            <Route path="/signin" element={<SignInPage />} />
 
             <Route path="/signup" element={<SignUpPage />} />
 
