@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url(https://firebasestorage.googleapis.com/v0/b/spotic-8108d.appspot.com/o/Assets%2FBackground%2Fbackground5.gif?alt=media&token=13d4e5a3-4d0c-44a5-9a01-cd9577b8cb8f) center center fixed;
+    background-size: cover;
+}
+
+.animated-background .landing-container {
+    color: rgba(245, 245, 245, 0.712);
+    /* font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; */
+    transform: translate(0, -10%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: unset;
+}
+
+#landing-h1 {
+    /* position: absolute; */
+    /* top: 50%;  */
+    /* right: 50%; */
+    /* transform: translate(50%,-50%); */
+    background-color: unset;
+    text-transform: uppercase;
+    font-family: verdana;
+    font-size: 12em;
+    font-weight: 700;
+    /* color: #f5f5f5; */
+    color: #1DB954;
+    text-shadow: 1px 1px 1px #919191,
+    /* text-shadow: 1px 1px 1px #1DB954, */
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 5px 1px #919191,
+        1px 6px 1px #919191,
+        1px 7px 1px #919191,
+        1px 8px 1px #919191,
+        1px 9px 1px #919191,
+        1px 10px 1px #919191,
+    1px 18px 6px rgba(16,16,16,0.4),
+    1px 22px 10px rgba(16,16,16,0.2),
+    1px 25px 35px rgba(16,16,16,0.2),
+    1px 30px 60px rgba(16,16,16,0.4);
+}
+
+#landing-h2 {
+    background-color: unset;
+    font-size: 2.5rem;
+    font-weight: 900;
+    -webkit-text-stroke: 1px black;
+}
+
+.landing-container span{
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    height: 55px;
+    margin: 0 15px;
+    perspective: 1000px;
+    background-color: unset;
+}
+
+.landing-container span a{
+    font-size: 19px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.landing-container span a:before,
+.landing-container span a:after{
+    position: absolute;
+    content: "JOIN US NOW";
+    height: 55px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.landing-container span a:before{
+    color: #fff;
+    background: #000;
+    transform: rotateY(0deg) translateZ(25px);
+}
+
+.landing-container span a:after{
+    color: #000;
+    transform: rotateX(90deg) translateZ(25px);
+}
+
+.landing-container span a:hover{
+    transform: translateZ(-25px) rotateX(-90deg);
+}
