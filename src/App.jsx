@@ -9,6 +9,9 @@ import LandingPage from './pages/LandingPage';
 import NotFoundPage from './pages/NotFoundPage';
 import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
+import ArtistPage from './pages/ArtistPage';
+import HomePage from './pages/HomePage';
+import AlbumPage from './pages/AlbumPage';
 
 //functions
 
@@ -23,6 +26,14 @@ function App() {
             <Route path="/signin" element={<SignInPage />} />
 
             <Route path="/signup" element={<SignUpPage />} />
+
+            {/* <Route path="/play" element={<PlayBar />} /> */}
+
+            <Route path="/home" element={<HomePage />} />
+
+            <Route path="/artist" element={<ArtistPage />} />
+
+            <Route path="/album" element={<AlbumPage />} />
 
             <Route path="/not-found" element={<NotFoundPage />} />
 
