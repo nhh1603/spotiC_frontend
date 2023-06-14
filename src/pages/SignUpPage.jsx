@@ -3,7 +3,7 @@ import Joi from "joi";
 import axios from "axios";
 import { toast } from "react-toastify";
 import passwordComplexity from "joi-password-complexity";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FaSpotify } from "react-icons/fa";
 import "../styles/SignUpPage.css";
@@ -75,17 +75,18 @@ const SignUpPage = () => {
         navigate('/signin');
     }
 
-
     return (
         <div className="signup-wapper">
             <div className="signup-container">
                 <div className="signup-logo">
-                    <FaSpotify 
-                        className="icon"
-                        size="50px"
-                        color="#1DB954"
-                    />
-                    <h1>SpotiC</h1>
+                    <Link to="/">
+                        <FaSpotify 
+                            className="icon"
+                            size="50px"
+                            color="#1DB954"
+                        />
+                        <h1>SpotiC</h1>
+                    </Link>
                 </div>
                 <div className="change-sign-mode">
                     Already registered?{" "}
