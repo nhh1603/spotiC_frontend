@@ -1,9 +1,14 @@
 import React, { useState } from "react"
 import "../styles/AuthPage.css"
 import axios from "axios"
+import { useSelector } from "react-redux";
 
 function AuthPage () {
     const apiUrl = process.env.REACT_APP_API_URL;
+    const users = useSelector((state) => state.users);
+
+    // console.log(users);
+    
     const [authMode, setAuthMode] = useState("signin");
     const [formDataSignIn, setFormDataSignIn] = useState({
         email: "",

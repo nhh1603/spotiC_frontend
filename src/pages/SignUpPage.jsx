@@ -2,9 +2,8 @@ import { useState } from "react";
 import Joi from "joi";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link, useHistory } from "react-router-dom";
 import passwordComplexity from "joi-password-complexity";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FaSpotify } from "react-icons/fa";
 import "../styles/SignUpPage.css";
@@ -19,7 +18,6 @@ const SignUpPage = () => {
 		gender: "",
 	});
 	const [errors, setErrors] = useState({});
-	const [isFetching, setIsFetching] = useState(false);
 
     const schema = {
         email: Joi.string().email({ tlds: { allow: false } }).required().label("Email"),
@@ -34,17 +32,14 @@ const SignUpPage = () => {
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
             try {
-                setIsFetching(true);
                 const url = process.env.REACT_APP_API_URL + "/submitSignUp";
                 await axios.post(
                     url,
                     data
                 );
-                setIsFetching(false);
                 toast.success("Account created successfully");
-                // navigate("/login");
+                navigate("/signin");
             } catch (error) {
-                setIsFetching(false);
                 if (error.response) {
                     toast.error(error.response.data);
                 } else {
@@ -80,17 +75,18 @@ const SignUpPage = () => {
         navigate('/signin');
     }
 
-
     return (
         <div className="signup-wapper">
             <div className="signup-container">
                 <div className="signup-logo">
-                    <FaSpotify 
-                        className="icon"
-                        size="50px"
-                        color="#1DB954"
-                    />
-                    <h1>SpotiC</h1>
+                    <Link to="/">
+                        <FaSpotify 
+                            className="icon"
+                            size="50px"
+                            color="#1DB954"
+                        />
+                        <h1>SpotiC</h1>
+                    </Link>
                 </div>
                 <div className="change-sign-mode">
                     Already registered?{" "}
