@@ -1,11 +1,10 @@
 
-
 .sidebar-open {
   transform: translateX(0);
   background: #191414;
   color: #fff;
   min-width: 200px;
-  width: 20%;
+  width: 250px;
   transition: transform 0.3s ease;
   z-index: 100;
 }
@@ -25,6 +24,15 @@
   margin-bottom: 5px;
 }
 
+.sidebar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px; 
+  height: 100%; 
+  z-index: 1;
+}
+
 .main-content {
   flex-grow: 1;
   background-color: #191414;
@@ -32,6 +40,14 @@
   overflow: auto;
   transition: padding 0.3s ease;
   padding: 30px;
+}
+
+.album-main-content{
+  flex-grow: 1;
+  background-color: #191414;
+  color: white;
+  overflow: auto;
+  transition: padding 0.3s ease;
 }
 
 .sidebar-open .main-content {
@@ -70,9 +86,15 @@
   font-weight: 600;
   color: var(--text-subdued, #6a6a6a);
   margin: 10px;
-  margin-bottom: 20px;
   padding-left: 10px;
 }
+
+.sidebar-element-href {
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none; /* Remove the underline */
+}
+
 .sidebar-element:hover{
   color: white;
 }
