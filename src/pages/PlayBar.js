@@ -6,12 +6,6 @@ import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-// import Slider from '@material-ui/core/Slider';
-import {
-  IoMdVolumeHigh,
-  IoMdVolumeOff,
-} from 'react-icons/io';
-
 
 const Songtitle = "title"
 const Songsubtitle = "subtitle blablablabal"
@@ -22,11 +16,11 @@ const musicCover = (
     alt="Album cover"
   />
 );
+// const song = "gs://spotic-8108d.appspot.com/Adele/Set Fire To The Rain - Adele.mp3"
 
 const PlayBar = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [liked, setLiked] = useState(false);
-  const [mute, setMute] = useState(false);
   const [time, setTime] = useState({
     min: "",
     sec: ""
@@ -37,7 +31,7 @@ const PlayBar = () => {
   });
 
   const [seconds, setSeconds] = useState();
-  const [volume, setVolume] = useState(30);
+
   const [play, { pause, duration, sound }] = useSound(song);
 
   useEffect(() => {
@@ -67,12 +61,6 @@ const PlayBar = () => {
     return () => clearInterval(interval);
   }, [sound]);
 
-  useEffect(() => {
-    if (sound) {
-      sound.volume(volume / 100);
-    }
-  }, [volume, sound]);
-
   const playPauseButton = () => {
     if (isPlaying) {
       pause();
@@ -84,21 +72,19 @@ const PlayBar = () => {
   };
 
   const previousSongButton = () => {
-    console.log("Previous song");
+    console.log("Previous song")
   };
 
   const nextSongButton = () => {
-    console.log("Next song");
+    console.log("Next song")
   };
+
 
   const likeButton = () => {
-    setLiked(prevLiked => !prevLiked);
-  };
-
-  const setVolumeState = () => {
-    setMute(!mute);
-    if (mute) {
-      setVolume(0);
+    if (liked) {
+      setLiked(false);
+    } else {
+      setLiked(true);
     }
   };
 
@@ -127,7 +113,7 @@ const PlayBar = () => {
       <div>
         {!liked ? (
             <button className="playbar-likeButtom" onClick={likeButton}>
-              <FaHeart style={{color: '#1db954',fontSize: "1.8em",background:"none"}}/>
+              <FaHeart style={{color: '#625e5e',fontSize: "1.8em",background:"none"}}/>
             </button>
           ) : (
             <button className="playbar-likeButtom" onClick={likeButton}>
@@ -135,27 +121,27 @@ const PlayBar = () => {
             </button>
           )}
       </div>
-      <div className="playbar-playButton_group">
+      <div className="playbar-playButton-group">
         <button className="playbar-playButton"onClick={previousSongButton}>
-          <IconContext.Provider value={{ size: "2.7em", color: "#1db954" }}>
+          <IconContext.Provider value={{ size: "2.8em", color: "#27AE60" }}>
             <BiSkipPrevious />
           </IconContext.Provider>
         </button>
         {!isPlaying ? (
           <button className="playbar-playButton" onClick={playPauseButton}>
-            <IconContext.Provider value={{ size: "2.7em", color: "#1db954" }}>
+            <IconContext.Provider value={{ size: "2.5em", color: "#27AE60" }}>
               <AiFillPlayCircle />
             </IconContext.Provider>
           </button>
         ) : (
           <button className="playbar-playButton" onClick={playPauseButton}>
-            <IconContext.Provider value={{ size: "2.7em", color: "#1db954" }}>
+            <IconContext.Provider value={{ size: "2.5em", color: "#27AE60" }}>
               <AiFillPauseCircle />
             </IconContext.Provider>
           </button>
         )}
         <button className="playbar-playButton"onClick={nextSongButton}>
-          <IconContext.Provider value={{ size: "2.7em", color: "#1db954" }}>
+          <IconContext.Provider value={{ size: "2.5em", color: "#27AE60" }}>
             <BiSkipNext />
           </IconContext.Provider>
         </button>
@@ -163,55 +149,25 @@ const PlayBar = () => {
 
       <div className="playbar-timeContainer">
         <div className="playbar-time">
-          <>
+          <p>
             {currTime.min}:{currTime.sec}
-          </>
+          </p>
             <input
               type="range"
               min="0"
               max={duration / 1000}
-              defaultValue="30"
+              defaultValue="0"
               value={seconds}
               className="playbar-timeline"
-              color="secondary"
               onChange={(e) => {
                 sound.seek(e.target.value);
               }}
             />
-          <>
+          <p>
             {time.min}:{time.sec}
-          </>
+          </p>
         </div>
       </div>
-      <div className="playBar-volume-group">
-        {!mute ? (
-          <div className="playBar-setVolume">
-            <IoMdVolumeHigh style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }} />
-          </div>
-        ) : (
-          <div className="playBar-setVolume">
-            <IoMdVolumeOff style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }} />
-          </div>
-        )}
-        <input
-          type="range"
-          min="0"
-          max="100"
-          defaultValue="30"
-          className="playBar-volumeSlider"
-          value={mute ? 0 : volume}
-          onChange={(e) => {
-            const newVolume = parseInt(e.target.value);
-            setVolume(newVolume);
-            if (newVolume === 0) {
-              setMute(true);
-            } else {
-              setMute(false);
-            }
-          }}
-        />
-      </div>
-
     </div>
   );
 }

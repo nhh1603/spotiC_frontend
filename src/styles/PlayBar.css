@@ -1,4 +1,3 @@
-
 .playbar-component {
   background-color: rgb(22, 22, 41);
   width: 100%;
@@ -28,8 +27,7 @@
 }
 
 .playbar-title-container h3{
-  font-size: 1.2em;
-  font-weight: 700;
+  font-size: 1.5em;
 }
 
 .playbar-title-container p{
@@ -37,8 +35,9 @@
 }
 
 .playbar-title {
-  margin-top: 1.8em;
+  margin-top: 1.2em;
   text-align: center;
+  height: 50%;
   color: #82aacb;
   font-weight: bold;
   display: flex;
@@ -48,6 +47,7 @@
 }
 
 .playbar-subtitle {
+  
   color: #625e5e;
   text-align: center;
   height: 50%;
@@ -63,14 +63,13 @@
   animation: marquee 3s linear infinite; 
 }
 
-.playbar-playButton_group{
-  display: flex;
+.playbar-playButton-group{
   background-color: rgb(22, 22, 41);
   align-items: center;
   border: none;
   position: absolute;
   left: 50%;
-  top: 10%;
+  top: 15%;
   transform: translateX(-50%);
 }
 
@@ -97,7 +96,7 @@
 .playbar-timeContainer {
   position: absolute;
   left: 35%;
-  top: 65%;
+  top: 55%;
   transform: translateX(-50%);
 
 }
@@ -108,37 +107,23 @@
 
 .playbar-time {
   width: 400%;
+  align-items: center;
   display: flex;
   justify-content:space-between;
   color: #828282;
-  font-size: smaller;
 }
 
 .playbar-timeline {
   width: 100%;
-  background-color: var(--spotify-green);
+  align-items: center;
+  background-color: #27ae60;
   cursor: pointer;
 }
 
 input[type="range"] {
-  background-color: var(--spotify-green);
+  background-color: #27ae60;
+  
 }
-
-.playBar-volume-group {
-  position: absolute;
-  right:1em;
-  display: flex;
-  align-items: center;
-}
-
-.playBar-setVolume {
-  margin-right: 10px; 
-}
-
-.playBar-volumeSlider {
-  width: 200px;
-}
-
 
 @media (max-width: 100%) {
   .component {
