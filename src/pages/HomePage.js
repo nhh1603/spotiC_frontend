@@ -163,6 +163,7 @@ export default function Home() {
                                     playlistName={playlist.name}
                                 />
                             ))}
+                            {/* <div className="sidebar-element" onClick>Sign Out</div> */}
                         </div>
                     )}
                 </div>
