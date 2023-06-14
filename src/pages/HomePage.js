@@ -1,29 +1,47 @@
 import React, {useState} from "react"
 import "../styles/styles.css";
-import "../styles/side_bar.css";
+import SideBar from "./Side_bar"
 import axios from "axios"
 import SearchBar from "./Search_bar";
 import {useEffect} from "react"
+import { FaPlayCircle } from 'react-icons/fa';
+
+
 
 function HomeSong({ songImgUrl, artistId, songName, artistName }) {
   function clickedButton() {
     console.log("CLICKED SONG");
   }
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="home_song">
+    <div 
+      className="home_song"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)} >
       <img
         className="home_song_img"
         src={songImgUrl}
         alt=""
         onClick={clickedButton}
       />
-      <div className="home_song_info">
-        <h4 className="home_song_name" onClick={clickedButton}>
-          {songName.length > 11 ? songName.slice(0, 11) + "..." : songName}
-        </h4>
-        <a className="home_song_artist_name" href={"/artist?artistId="+artistId} >
-          {artistName}
-        </a>
+      <div className="home_song_info_container">
+        <div className="home_song_info">
+          <h4 className="home_song_name" onClick={clickedButton}>
+            {songName.length > 11 ? songName.slice(0, 11) + "..." : songName}
+          </h4>
+          <a className="home_song_artist_name" href={"/artist?artistId="+artistId} >
+            {artistName}
+          </a>
+        </div>
+
+        {isHovered && (
+          <div className="play-icon">
+            
+          <FaPlayCircle/>
+          </div>
+        )}
+
       </div>
     </div>
   );
@@ -56,32 +74,12 @@ function HomeArtist({artistId, artistImgUrl, artistGenre, artistName }) {
 }
 
 
-function SidebarPlaylist({ playlistName }) {
-  function clickedButton() {
-    console.log("CLICKED PLAYLIST");
-  }
 
-  return (
-    <div className="sidebar-playlist">
-      <span
-        className="sidebar-playlist-name"
-        onClick={clickedButton}
-      >
-        {playlistName}
-      </span>
-    </div>
-  );
-}
 
 export default function Home() {
 
   const apiUrl = process.env.REACT_APP_API_URL;
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
+  
 
   const [artists, setArtists] = useState([]);
 
@@ -123,49 +121,11 @@ export default function Home() {
 
   const [playlists, setPlaylists] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(apiUrl + '/playlist');
-        if (Array.isArray(response.data.data)) {
-          setPlaylists(response.data.data);
-        } else {
-          console.error('Invalid response data:', response.data.data);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []); 
 
   return (
-    <div className="container">
+    <div className="home-container">
       <div>
-        <div className="menu-icon" onClick={toggleSidebar}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <div className="sidebar">
-          {sidebarOpen && (
-            <div className="sidebar-open">
-              <div className="sidebar-element">Home</div>
-              <div className="sidebar-element">Create Playlist</div>
-              <div className="sidebar-element">Liked Songs</div>
-              <div className="playlist-line" />
-
-              {playlists.map((playlist) => (
-                <SidebarPlaylist
-                  key={playlist._id}
-                  playlistName={playlist.name}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+        <SideBar />
       </div>
       <div className="main-content">
         <SearchBar />
