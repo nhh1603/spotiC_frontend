@@ -1,9 +1,12 @@
 import React, { useState } from "react"
 import "../styles/styles.css";
 import "../styles/side_bar.css";
-import axios from "axios"
+import axios from "axios"   
 import SearchBar from "./Search_bar";
-import { useEffect } from "react"
+import { useEffect } from "react"   
+
+import { useDispatch } from "react-redux";
+import * as actions from "../redux/auth/auth";
 
 function HomeSong({ songImgUrl, artistId, songName, artistName }) {
     function clickedButton() {
@@ -140,6 +143,12 @@ export default function Home() {
         fetchData();
     }, []);
 
+    const dispatch = useDispatch();
+    const handleSignOut = async () => {
+        dispatch(actions.logout());
+        window.location.href = '/';
+    };
+
     return (
         <div className="container">
             <div>
@@ -163,7 +172,7 @@ export default function Home() {
                                     playlistName={playlist.name}
                                 />
                             ))}
-                            {/* <div className="sidebar-element" onClick>Sign Out</div> */}
+                            <div className="sidebar-element" onClick={handleSignOut}>Sign Out</div>
                         </div>
                     )}
                 </div>
