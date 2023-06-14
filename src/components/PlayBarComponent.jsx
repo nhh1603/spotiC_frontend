@@ -7,11 +7,13 @@ import { IconContext } from "react-icons";
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import axios from "axios";
 
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../redux/audioPlayer/audioPlayer";
+
 import {
     IoMdVolumeHigh,
     IoMdVolumeOff,
 } from 'react-icons/io';
-
 
 const Songtitle = "title"
 const Songsubtitle = "subtitle blablablabal"
@@ -31,7 +33,10 @@ await axios.get(process.env.REACT_APP_API_URL + "/song/6482c308b5a80e994767c58a"
     });
 
 const PlayBarComponent = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const dispatch = useDispatch();
+
+    // const [isPlaying, setIsPlaying] = useState(false);
+    const { isPlaying } = useSelector(state => state.audioPlayer);
     const [liked, setLiked] = useState(false);
     const [mute, setMute] = useState(false);
     const [time, setTime] = useState({
@@ -83,10 +88,14 @@ const PlayBarComponent = () => {
     const playPauseButton = () => {
         if (isPlaying) {
             pause();
-            setIsPlaying(false);
+            // setIsPlaying(false);
+            // dispatch(actions.setIsPlaying());
+            dispatch(actions.setIsPlaying(false));
         } else {
             play();
-            setIsPlaying(true);
+            // setIsPlaying(true);
+            // dispatch(actions.setIsPlaying());
+            dispatch(actions.setIsPlaying(true));
         }
     };
 
@@ -193,11 +202,11 @@ const PlayBarComponent = () => {
             <div className="playBar-volume-group">
                 {!mute ? (
                     <div className="playBar-setVolume">
-                        <IoMdVolumeHigh style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }} />
+                        <IoMdVolumeHigh style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }}/>
                     </div>
                 ) : (
                     <div className="playBar-setVolume">
-                        <IoMdVolumeOff style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }} />
+                        <IoMdVolumeOff style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }}/>
                     </div>
                 )}
                 <input
