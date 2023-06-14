@@ -1,30 +1,46 @@
 import "../styles/album_styles.css";
 import React, { useEffect, useState } from "react";
 import SearchBar from "./Search_bar";
-import "../styles/side_bar.css";
 import { useLocation } from "react-router-dom";
 import axios from "axios"
+import SideBar from "./Side_bar"
+import { FaPlay } from 'react-icons/fa';
 
-function AlbumSong({ songName, songHits, songLength }) {
+function AlbumSong({ songName, index, songHits, songLength }) {
   function clickedButton() {
     console.log("CLICKED SONG");
   }
+  const [isHovered, setIsHovered] = useState(false);
+  const formattedHits = parseInt(songHits).toLocaleString();
   return (
-    <div className="album_song" onClick={clickedButton}>
+    <div 
+      className="album_song" 
+      onClick={clickedButton}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}>
+    <h5  class="non-bold" className="album_song_index">{index}</h5>
+    {isHovered && (
+          <div className="play-icon">
+            
+          <FaPlay/>
+          </div>
+        )}
       <div className="album_song_info">
         <div className="album_song_name">
           <h4>{songName}</h4>
         </div>
         <div className="album_song_hits">
-          <h6>{songHits}</h6>
+          <h5 class="non-bold">{formattedHits}</h5>
         </div>
         <div className="album_song_length">
-          <h6>{songLength}</h6>
+          <h5 class="non-bold">{songLength}</h5>
         </div>
       </div>
     </div>
   );
 }
+
+
 
 function MoreAlbum({ albumImgUrl, albumId, albumName, albumYear }) {
   function clickedButton() {
@@ -86,7 +102,7 @@ function AlbumHead({
       <div className="album_info">
         <span className="album_name">{albumName}</span>
         <div>
-          <h1 className="artist_name" onClick={clickedButton}>
+          <h1 className="album_artist_name" onClick={clickedButton}>
             {artistName} • {albumYear} • {albumTotalSong} songs
           </h1>
         </div>
@@ -101,6 +117,8 @@ export default function Album() {
   const queryParams = new URLSearchParams(location.search);
   const queryValue = queryParams.get("albumId");
 
+
+  
 
   const [songs, setSongs] = useState([]);
 
@@ -171,8 +189,20 @@ export default function Album() {
     fetchData();
   }, [albumArtistId]); 
 
+
+
+  
+
+
   return (
-    <>
+
+
+      <div className="home-container">
+      <div>
+        <SideBar />
+      </div>
+
+<div className="album-main-content">
       <div>
         <div className="album_container">
           {albums.map((album) => (
@@ -185,8 +215,8 @@ export default function Album() {
               albumTotalSong={album.totalSongs}
             />
           ))}
-
         </div>
+
       </div> 
       <div>
         <div className="album_song_header">
@@ -198,9 +228,10 @@ export default function Album() {
         </div>
 
         <div className="album_song_container">
-          {songs.map((song) => (
+          {songs.map((song, index) => (
             <AlbumSong
               key={song._id}
+              index={index+1}
               songName={song.name}
               songHits={song.listenTimes}
               songLength={song.duration}
@@ -223,6 +254,8 @@ export default function Album() {
           ))}
         </div>
       </div>
-    </>
+      </div>
+      </div>
+
   );
 }
