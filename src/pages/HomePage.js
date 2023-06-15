@@ -1,11 +1,10 @@
 import React, {useState} from "react"
-import "../styles/styles.css";
-import SideBar from "./Side_bar"
+import "../styles/HomePage.css";
 import axios from "axios"
-import SearchBar from "./Search_bar";
+import SideBar from "../components/Side_bar"
+import SearchBar from "../components/Search_bar";
 import {useEffect} from "react"
 import { FaPlayCircle } from 'react-icons/fa';
-
 
 
 function HomeSong({ songImgUrl, artistId, songName, artistName }) {
@@ -79,7 +78,6 @@ function HomeArtist({artistId, artistImgUrl, artistGenre, artistName }) {
 export default function Home() {
 
   const apiUrl = process.env.REACT_APP_API_URL;
-  
 
   const [artists, setArtists] = useState([]);
 

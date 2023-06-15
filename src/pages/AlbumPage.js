@@ -1,9 +1,9 @@
 import "../styles/album_styles.css";
 import React, { useEffect, useState } from "react";
-import SearchBar from "./Search_bar";
+import SearchBar from "../components/Search_bar";
 import { useLocation } from "react-router-dom";
 import axios from "axios"
-import SideBar from "./Side_bar"
+import SideBar from "../components/Side_bar"
 import { FaPlay } from 'react-icons/fa';
 
 function AlbumSong({ songName, index, songHits, songLength }) {

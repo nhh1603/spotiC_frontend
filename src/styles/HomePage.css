@@ -24,6 +24,11 @@ body {
   align-items: center;
 }
 
+.home_song_container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
 
 .home_song_info_container {
   display: flex;
@@ -94,6 +99,11 @@ body {
   overflow: auto;
 }
 
+.home_artist_container::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
 .home_artist {
   background: #181818;
   border: 1px solid #181818;
@@ -145,3 +155,8 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+
+/* .home-container::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  } */
