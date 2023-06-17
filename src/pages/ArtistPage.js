@@ -30,10 +30,10 @@ function ArtistSong({ songImgUrl,index, songName, songHits, songLength }) {
           <h4>{songName}</h4>
         </div>
         <div className="artist_song_hits">
-          <h5 class="non-bold">{formattedHits}</h5>
+          <h5 className="non-bold">{formattedHits}</h5>
         </div>
         <div className="artist_song_length">
-          <h5 class="non-bold">{songLength}</h5>
+          <h5 className="non-bold">{songLength}</h5>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import "../styles/side_bar.css";
-import { FaHome, FaPlus, FaHeart, FaSignOutAlt } from 'react-icons/fa';
+import { FaHome, FaPlus, FaHeart, FaSignOutAlt, FaSearch } from 'react-icons/fa';
 
 import React, { useEffect, useState } from "react";
 import axios from "axios"
@@ -74,6 +74,7 @@ const SideBar = () => {
                 {sidebarOpen && (
                     <div className="sidebar-open">
                         <a href="/home" className="sidebar-element-href"><div className="sidebar-element"><FaHome />           Home</div></a>
+                        <a href="/search" className="sidebar-element-href"><div className="sidebar-element"><FaSearch />            Search</div></a>
                         <a href="/home" className="sidebar-element-href"><div className="sidebar-element"><FaPlus />            Create Playlist</div></a>
                         <a href="/home" className="sidebar-element-href"><div className="sidebar-element"><FaHeart />            Liked Songs</div></a>
                         <a href="/" className="sidebar-element-href"><div className="sidebar-element" onClick={handleLogout}><FaSignOutAlt />            Log Out</div></a>

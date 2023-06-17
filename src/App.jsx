@@ -13,9 +13,11 @@ import SignInPage from './pages/SignInPage';
 import ArtistPage from './pages/ArtistPage';
 import HomePage from './pages/HomePage';
 import AlbumPage from './pages/AlbumPage';
+import SearchPage from './pages/SearchPage';
 
 //components
 import PlayBarComponent from './components/PlayBarComponent';
+import SideBar from './components/Side_bar';
 
 //functions
 
@@ -50,6 +52,7 @@ function App() {
                 location.pathname !== "/not-found" && (
                     <Fragment>
                         {/* {currentSong && <PlayBarComponent />} */}
+                        {/* <SideBar /> */}
                         <PlayBarComponent />
                     </Fragment>
                 )}
@@ -67,6 +70,8 @@ function App() {
                 {/* <Route path="/play" element={<PlayBar />} /> */}
 
                 <Route path="/home" element={<HomePage />} />
+
+                <Route path="/search" element={<SearchPage />} />
 
                 <Route path="/artist" element={<ArtistPage />} />
 
