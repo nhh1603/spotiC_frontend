@@ -1,10 +1,10 @@
 import "../styles/album_styles.css";
 import React, { useEffect, useState } from "react";
-import SearchBar from "../components/Search_bar";
 import { useLocation } from "react-router-dom";
 import axios from "axios"
-import SideBar from "../components/Side_bar"
+import SideBar from "../components/SideBarComponent"
 import { FaPlay } from 'react-icons/fa';
+import Album from "../components/AlbumComponent";
 
 function AlbumSong({ songName, index, songHits, songLength }) {
   function clickedButton() {
@@ -42,27 +42,6 @@ function AlbumSong({ songName, index, songHits, songLength }) {
 
 
 
-function MoreAlbum({ albumImgUrl, albumId, albumName, albumYear }) {
-  function clickedButton() {
-    console.log("CLICKED ALBUM");
-  }
-
-  return (
-    <a href={"/album?albumId="+albumId}>
-    <div className="album_other_album" onClick={clickedButton}>
-      <img className="album_other_album_img" src={albumImgUrl} alt="" />
-      <div className="album_other_album_info">
-        <span className="album_other_album_name" >
-          {albumName.length > 13 ? albumName.slice(0, 13) + "..." : albumName}
-        </span>
-        <br />
-        <span className="album_other_album_year">{albumYear}</span>
-      </div>
-    </div>
-    </a>
-  );
-}
-
 
 
 
@@ -72,6 +51,7 @@ function AlbumHead({
   artistName,
   albumName,
   albumYear,
+  artistId,
   albumTotalSong
 }) {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -102,8 +82,8 @@ function AlbumHead({
       <div className="album_info">
         <span className="album_name">{albumName}</span>
         <div>
-          <h1 className="album_artist_name" onClick={clickedButton}>
-            {artistName} • {albumYear} • {albumTotalSong} songs
+          <h1 className="album_artist_name_year_song">
+            <a className="album_artist_name" href={"/artist?artistId="+artistId}> {artistName}</a> • {albumYear} • {albumTotalSong} songs
           </h1>
         </div>
       </div>
@@ -111,7 +91,7 @@ function AlbumHead({
   );
 }
 
-export default function Album() {
+export default function AlbumPage() {
   const apiUrl = process.env.REACT_APP_API_URL;
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -197,7 +177,7 @@ export default function Album() {
   return (
 
 
-      <div className="home-container">
+      <div className="album-home-container">
       <div>
         <SideBar />
       </div>
@@ -213,6 +193,7 @@ export default function Album() {
               artistName={album.artistName}
               albumYear={album.year}
               albumTotalSong={album.totalSongs}
+              artistId={album.artistId}
             />
           ))}
         </div>
@@ -244,7 +225,7 @@ export default function Album() {
         <h1 className="album_title">More Albums</h1>
         <div className="album_other_album_container">
           {otherAlbums.map((otherAlbum) => (
-            <MoreAlbum
+            <Album
               key={otherAlbum._id}
               albumId={otherAlbum._id}
               albumImgUrl={otherAlbum.cover}
