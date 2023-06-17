@@ -14,6 +14,7 @@ import ArtistPage from './pages/ArtistPage';
 import HomePage from './pages/HomePage';
 import AlbumPage from './pages/AlbumPage';
 import SearchPage from './pages/SearchPage';
+import PlayListPage from './pages/PlayListPage';
 
 //components
 import PlayBarComponent from './components/PlayBarComponent';
@@ -70,6 +71,8 @@ function App() {
                 {/* <Route path="/play" element={<PlayBar />} /> */}
 
                 <Route path="/home" element={<HomePage />} />
+
+                <Route path="/playlist" element={<PlayListPage />} />
 
                 <Route path="/search" element={<SearchPage />} />
 
