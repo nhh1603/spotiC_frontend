@@ -102,7 +102,7 @@ body {
 .home_artist_container::-webkit-scrollbar {
     width: 0px;
     background: transparent;
-  }
+}
 
 .home_artist {
   background: #181818;
