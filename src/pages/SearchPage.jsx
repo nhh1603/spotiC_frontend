@@ -47,7 +47,7 @@ const SearchPage = () => {
                             <h2 className="search-results-section-title">Songs</h2>
                             <div className="search-results-section-content">
                                 {results.songs.map((song, index) => (
-                                    <Song songImgUrl={song.cover} index={index+1} songName={song.name} songHits={song.listenTimes} songLength={song.duration} />
+                                    <Song song= {song.song} songImgUrl={song.cover} index={index+1} songName={song.name} songHits={song.listenTimes} songLength={song.duration} />
                                 ))}
                             </div>
                         </div>

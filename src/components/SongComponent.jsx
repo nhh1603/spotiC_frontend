@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { FaPlay } from 'react-icons/fa';
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentSong } from "../redux/audioPlayer/audioPlayer";
 
 
-function Song({ songImgUrl, index, songName, songHits, songLength }) {
+function Song({ song, songImgUrl, index, songName, songHits, songLength }) {
+    const { currentSong } = useSelector((state) => state.audioPlayer);
+    const dispatch = useDispatch();
+
     function clickedButton() {
         console.log("CLICKED SONG");
+        // if (currentSOng && currentSong.action === "play")
+        dispatch(setCurrentSong({ song: song, action: "play" }));
     }
     const [isHovered, setIsHovered] = useState(false);
     const formattedHits = parseInt(songHits).toLocaleString();
