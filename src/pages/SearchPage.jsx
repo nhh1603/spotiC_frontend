@@ -24,6 +24,7 @@ const SearchPage = () => {
             const url = process.env.REACT_APP_API_URL + `/search/?search=${input.value}`;
             const { data } = await axiosInstance.get(url);
             setResults(data.data);
+            console.log("result",data.data);
         } catch (error) {
             console.log(error);
         }
@@ -45,22 +46,25 @@ const SearchPage = () => {
                     onChange={handleSearch}
                     value={search}
                 />
-                <SearchIcon style={{"padding-left": "20px"}}/>
+                <SearchIcon style={{"paddingLeft": "20px"}}/>
             </div>
 
             {Object.keys(results).length > 0 && (
                 <div className="search-results-container">
+                    
                     {results.songs.length > 0 && (
                         <div className="search-results-section">
                             <h2 className="search-results-section-title">Songs</h2>
                             <div className="search-results-section-content">
                                 {results.songs.map((song, index) => (
-                                    <Song song= {song.song} songImgUrl={song.cover} index={index+1} songName={song.name} songHits={song.listenTimes} songLength={song.duration} />
+                                    <Song song= {song} index={index+1} key={song._id} />
+                                    
                                 ))}
                                 
                             </div>
                         </div>
                     )}
+                    
 
                     {results.albums.length > 0 && (
                         
@@ -69,11 +73,8 @@ const SearchPage = () => {
                             <div className="artist_album_container">
                                 {results.albums.map((album, index) => (
                                     <Album 
-                                        albumImgUrl={album.cover} 
+                                        album={album} 
                                         index={index+1} 
-                                        albumName={album.name} 
-                                        albumId={album._id} 
-                                        albumYear={album.year} 
                                         key={album._id}
                                     />
                                 ))}    

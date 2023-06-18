@@ -4,14 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentSong } from "../redux/audioPlayer/audioPlayer";
 
 
-function Song({ song, songImgUrl, index, songName, songHits, songLength }) {
+function Song({ song, index }) {
+    const songURL= song.song 
+    const songImgUrl=song.cover 
+    const songName=song.name 
+    const songHits=song.listenTimes 
+    const songLength=song.duration
     const { currentSong } = useSelector((state) => state.audioPlayer);
     const dispatch = useDispatch();
 
     function clickedButton() {
         console.log("CLICKED SONG");
         // if (currentSOng && currentSong.action === "play")
-        dispatch(setCurrentSong({ song: song, action: "play" }));
+        dispatch(setCurrentSong({ song: songURL, action: "play" }));
     }
     const [isHovered, setIsHovered] = useState(false);
     const formattedHits = parseInt(songHits).toLocaleString();
@@ -21,7 +26,7 @@ function Song({ song, songImgUrl, index, songName, songHits, songLength }) {
             onClick={clickedButton}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
-            <h5 class="non-bold" className="song_index">{index}</h5>
+            <h5 className="non-bold song_index">{index}</h5>
             {isHovered && (
                 <div className="play-icon">
 
