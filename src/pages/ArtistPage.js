@@ -2,23 +2,38 @@ import "../styles/artist_styles.css";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios"
+import SideBar from "../components/Side_bar"
+import { FaPlay } from 'react-icons/fa';
 
-function ArtistSong({ songImgUrl, songName, songHits, songLength }) {
+function ArtistSong({ songImgUrl,index, songName, songHits, songLength }) {
   function clickedButton() {
     console.log("CLICKED SONG");
   }
+  const [isHovered, setIsHovered] = useState(false);
+  const formattedHits = parseInt(songHits).toLocaleString();
   return (
-    <div className="artist_song" onClick={clickedButton}>
+    <div 
+      className="artist_song" 
+      onClick={clickedButton} 
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}>
+      <h5 class="non-bold" className="song_index">{index}</h5>
+      {isHovered && (
+          <div className="play-icon">
+            
+          <FaPlay/>
+          </div>
+        )}
       <img className="artist_song_img" src={songImgUrl} alt="" />
       <div className="artist_song_info">
         <div className="artist_song_name">
           <h4>{songName}</h4>
         </div>
         <div className="artist_song_hits">
-          <h6>{songHits}</h6>
+          <h5 className="non-bold">{formattedHits}</h5>
         </div>
         <div className="artist_song_length">
-          <h6>{songLength}</h6>
+          <h5 className="non-bold">{songLength}</h5>
         </div>
       </div>
     </div>
@@ -112,6 +127,7 @@ export default function Artist() {
       try {
         const response = await axios.get(apiUrl + '/song/artist/' + queryValue);
         if (Array.isArray(response.data.data)) {
+          
           setSongs(response.data.data);
         } else {
           console.error('Invalid response data:', response.data.data);
@@ -164,7 +180,12 @@ export default function Artist() {
 
 
   return (
-    <>
+    
+    <div className="home-container">
+      <div>
+        <SideBar />
+      </div>
+      <div className="album-main-content">
       <div>
         <div className="artist_container">
           {artists.map((artist) => (
@@ -190,9 +211,10 @@ export default function Artist() {
         </div>
 
         <div className="artist_song_container">
-          {songs.map((song) => (
+          {songs.map((song, index) => (
             <ArtistSong
               key={song._id}
+              index={index+1}
               songImgUrl={song.cover}
               songName={song.name}
               songHits={song.listenTimes}
@@ -215,7 +237,10 @@ export default function Artist() {
             />
           ))}
         </div>
+        </div>
       </div>
-    </>
+      </div>
+
+    
   );
 }

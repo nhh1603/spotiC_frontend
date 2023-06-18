@@ -1,5 +1,4 @@
 import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "./redux/user/apiCalls";
@@ -14,9 +13,13 @@ import SignInPage from './pages/SignInPage';
 import ArtistPage from './pages/ArtistPage';
 import HomePage from './pages/HomePage';
 import AlbumPage from './pages/AlbumPage';
+import SearchPage from './pages/SearchPage';
+import PlayListPage from './pages/PlayListPage';
 
 //components
-import PlayBarComponent from './components/PlayBarComponent';
+// import PlayBarComponent from './components/PlayBarComponent';
+import PlayBarComponent from './components/PlayBarComponent_new';
+import SideBar from './components/Side_bar';
 
 //functions
 
@@ -50,8 +53,9 @@ function App() {
                 location.pathname !== "/signup" &&
                 location.pathname !== "/not-found" && (
                     <Fragment>
-                        {/* {currentSong && <PlayBarComponent />} */}
-                        <PlayBarComponent />
+                        {currentSong && <PlayBarComponent />}
+                        {/* <SideBar /> */}
+                        {/* <PlayBarComponent /> */}
                     </Fragment>
                 )}
         
@@ -68,6 +72,10 @@ function App() {
                 {/* <Route path="/play" element={<PlayBar />} /> */}
 
                 <Route path="/home" element={<HomePage />} />
+
+                <Route path="/playlist" element={<PlayListPage />} />
+
+                <Route path="/search" element={<SearchPage />} />
 
                 <Route path="/artist" element={<ArtistPage />} />
 

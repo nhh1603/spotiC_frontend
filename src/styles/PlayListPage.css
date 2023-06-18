@@ -4,10 +4,9 @@ body {
   color: white;
   margin: 0;
   padding: 0;
-  margin-bottom: 110px;
 }
 
-.album {
+.playlist {
   height: 55vh;
   max-height: none;
   min-height: 340px;
@@ -24,18 +23,18 @@ body {
   z-index: 0;
 }
 
-.album_artist_year_total {
+.playlist_artist_year_total {
   display: flex;
 }
 
-.album_song_index {
+.playlist_song_index {
 	margin-right: 8px;
 	width: 50px;
 	text-align: center;
 }
 
 
-.album_song:hover .play-icon {
+.playlist_song:hover .play-icon {
   position: absolute;
   top: 50%;
   left: 30px;
@@ -45,25 +44,18 @@ body {
   z-index: 1;
 }
 
-.album_song:hover .album_song_index {
+.playlist_song:hover .album_song_index {
   opacity: 0;
 }
 
-.album_artist_name_year_song {
+.playlist_artist_name {
   padding-left: 3px;
   font-size: 1.5rem;
   line-height: 2;
   margin-top: 4px;
 }
 
-.album_artist_name {
-  display: inline-block;
-  box-sizing: border-box;
-  color: var(--text-base, white);
-  text-decoration: none; /* Remove the underline */
-}
-
-.album_song_header {
+.playlist_song_header {
   display: flex;
   align-items: center;
   font-size: 20px;
@@ -74,7 +66,7 @@ body {
   overflow: auto;
 }
 
-.album_song_header_item {
+.playlist_song_header_item {
   flex: 1;
   color: var(--text-subdued, #6a6a6a);
   font-size: 1.05rem;
@@ -86,7 +78,7 @@ body {
   padding-right: 20px;
 }
 
-.album_song_header_title {
+.playlist_song_header_title {
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -96,8 +88,8 @@ body {
   padding-left: 160px;
 }
 
-.album_song_header_hits,
-.album_song_header_length {
+.playlist_song_header_hits,
+.playlist_song_header_length {
   flex: 0 0 60px;
   text-align: right;
 }
@@ -107,11 +99,11 @@ h5.non-bold {
 }
 
 
-.album_song_header_length {
+.playlist_song_header_length {
   padding-right: 70px;
 }
 
-.album_info {
+.playlist_info {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -121,14 +113,14 @@ h5.non-bold {
   box-sizing: border-box;
 }
 
-.album_img {
+.playlist_img {
   width: 325px;
   position: absolute;
   padding-left: 60px;
   padding-bottom: 20px;
 }
 
-.album_name {
+.playlist_name {
   text-align: left;
   margin-block: 0px;
   font-weight: 900;
@@ -136,19 +128,19 @@ h5.non-bold {
   font-size: 5.5rem;
 }
 
-.album_title {
+.playlist_title {
   margin-top: 50px;
   padding-left: 40px;
 }
 
-.album_song_container {
+.playlist_song_container {
   margin-top: 10px;
   margin-bottom: 16px;
   padding-left: 50px;
   padding-right: 50px;
 }
 
-.album_song {
+.playlist_song {
   background: #181818;
   font-size: 20px;
   font-weight: bold;
@@ -160,11 +152,11 @@ h5.non-bold {
 }
 
 
-.album_song:hover {
+.playlist_song:hover {
   background-color: #3b3b3b;
 }
 
-.album_song_info {
+.playlist_song_info {
   display: flex;
   margin-left: 40px;
   flex: 1;
@@ -172,7 +164,7 @@ h5.non-bold {
   align-items: center;
 }
 
-.album_song_name {
+.playlist_song_name {
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -180,18 +172,18 @@ h5.non-bold {
   max-width: 270px;
 }
 
-.album_song_hits {
+.playlist_song_hits {
   flex: 0 0 30px;
   text-align: right;
 }
 
-.album_song_length {
+.playlist_song_length {
   flex: 0 0 30px;
   text-align: right;
   padding-right: 60px;
 }
 
-.album_other_album_container {
+.playlist_other_album_container {
   display: flex;
   justify-content: flex-start;
   margin-top: 10px;
@@ -200,7 +192,7 @@ h5.non-bold {
   overflow: auto;
 }
 
-.album_other_album {
+.playlist_other_album {
   background: #181818;
   border: 1px solid #181818;
   font-size: 24px;
@@ -213,11 +205,11 @@ h5.non-bold {
   padding-bottom: 25px;
 }
 
-.album_other_album:hover {
+.playlist_other_album:hover {
   background-color: #3b3b3b;
 }
 
-.album_other_album_name {
+.playlist_other_album_name {
   display: inline-block;
   box-sizing: border-box;
   margin: 5px 0;
@@ -227,7 +219,7 @@ h5.non-bold {
   text-decoration: none; /* Remove the underline */
 }
 
-.album_other_album_year {
+.playlist_other_album_year {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   margin: 5px 0;
@@ -239,7 +231,7 @@ h5.non-bold {
 }
 
 
-.album_other_album_img {
+.album_other_playlist_img {
   height: 200px;
   width: 200px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -250,10 +242,4 @@ h5.non-bold {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-}
-.album-home-container {
-  display: flex;
-  width: 100%;
-  overflow: hidden;
-  height: calc(100vh - 110px);
 }
