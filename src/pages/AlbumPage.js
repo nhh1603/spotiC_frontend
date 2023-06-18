@@ -225,13 +225,7 @@ export default function AlbumPage() {
         <h1 className="album_title">More Albums</h1>
         <div className="album_other_album_container">
           {otherAlbums.map((otherAlbum) => (
-            <Album
-              key={otherAlbum._id}
-              albumId={otherAlbum._id}
-              albumImgUrl={otherAlbum.cover}
-              albumName={otherAlbum.name}
-              albumYear={otherAlbum.year}
-            />
+            <Album album={otherAlbum} key={otherAlbum._id}/>
           ))}
         </div>
       </div>
