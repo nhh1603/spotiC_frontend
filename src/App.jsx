@@ -17,7 +17,8 @@ import SearchPage from './pages/SearchPage';
 import PlayListPage from './pages/PlayListPage';
 
 //components
-import PlayBarComponent from './components/PlayBarComponent';
+// import PlayBarComponent from './components/PlayBarComponent';
+import PlayBarComponent from './components/PlayBarComponent_new';
 import SideBar from './components/Side_bar';
 
 //functions
@@ -52,9 +53,9 @@ function App() {
                 location.pathname !== "/signup" &&
                 location.pathname !== "/not-found" && (
                     <Fragment>
-                        {/* {currentSong && <PlayBarComponent />} */}
+                        {currentSong && <PlayBarComponent />}
                         {/* <SideBar /> */}
-                        <PlayBarComponent />
+                        {/* <PlayBarComponent /> */}
                     </Fragment>
                 )}
         
