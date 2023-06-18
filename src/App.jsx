@@ -19,7 +19,7 @@ import PlayListPage from './pages/PlayListPage';
 //components
 // import PlayBarComponent from './components/PlayBarComponent';
 import PlayBarComponent from './components/PlayBarComponent_new';
-import SideBar from './components/Side_bar';
+import SideBar from './components/SideBarComponent';
 
 //functions
 

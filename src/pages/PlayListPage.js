@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 // import SearchBar from "../components/Search_bar";
 import { useLocation } from "react-router-dom";
 import axios from "axios"
-import SideBar from "../components/Side_bar"
+import SideBar from "../components/SideBarComponent";
 import { FaPlay } from 'react-icons/fa';
 
 // userName={playlists.userName}: mod backend here to limit acces per user
