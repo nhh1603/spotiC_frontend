@@ -53,7 +53,7 @@ function App() {
                 location.pathname !== "/signup" &&
                 location.pathname !== "/not-found" && (
                     <Fragment>
-                        {currentSong && <PlayBarComponent />}
+                        {currentSong.song && <PlayBarComponent />}
                         {/* <SideBar /> */}
                         {/* <PlayBarComponent /> */}
                     </Fragment>

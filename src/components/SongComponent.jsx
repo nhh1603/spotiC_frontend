@@ -16,7 +16,7 @@ function Song({ song, index }) {
     function clickedButton() {
         console.log("CLICKED SONG");
         // if (currentSOng && currentSong.action === "play")
-        dispatch(setCurrentSong({ song: songURL, action: "play" }));
+        dispatch(setCurrentSong({ song: song, action: "play" }));
     }
     const [isHovered, setIsHovered] = useState(false);
     const formattedHits = parseInt(songHits).toLocaleString();

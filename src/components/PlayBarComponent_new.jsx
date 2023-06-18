@@ -11,6 +11,7 @@ import {
 } from 'react-icons/io';
 import "../styles/PlayBarComponent.css";
 import axios from "axios";
+import Song from "./SongComponent";
 
 const AudioPlayer = () => {
     const [trackProgress, setTrackProgress] = useState(0);
@@ -21,27 +22,31 @@ const AudioPlayer = () => {
     const [mute, setMute] = useState(false);
     const [volume, setVolume] = useState(30);
 
+
     const audioRef = useRef();
     const intervalRef = useRef();
 
-    const Songtitle = "title"
-    const Songsubtitle = "subtitle blablablabal"
-    const musicCover = (
+    let Songtitle = "titleInitial";
+    let Songsubtitle = "artist";
+    let musicCover = (
         <img
             className="playbar-musicCover"
             src="https://picsum.photos/200/200"
             alt="Album cover"
         />
     );
+    if (currentSong.song !== null) {
+        Songtitle = currentSong.song.name;
+        Songsubtitle = currentSong.song.artistName;
+        musicCover = (
+            <img
+                className="playbar-musicCover"
+                src={currentSong.song.cover}
+                alt="Album cover"
+            />
+        );
+    }
 
-    // let song;
-    // axios.get(process.env.REACT_APP_API_URL + "/song/6482c308b5a80e994767c58a")
-    //     .then((response) => {
-    //         console.log(response.data.data.song);
-    //         song = response.data.data.song;
-    //     });
-
-    // dispatch(setCurrentSong({ ...currentSong, song: "https://firebasestorage.googleapis.com/v0/b/spotic-8108d.appspot.com/o/Songs%2FTaylor%20Swift%2Falbums%2F1989%2FNew%20Romantics%20-%20Taylor%20Swift.mp3?alt=media&token=a1475b66-132b-4d30-85e4-2ebcaf2e26e7", action: "pause" }));
 
     const startTimer = () => {
         clearInterval(intervalRef.current);
@@ -96,6 +101,7 @@ const AudioPlayer = () => {
 
     const nextSongButton = () => {
         console.log("Next song");
+        console.log(intervalRef);
     };
 
     const likeButton = () => {
@@ -105,6 +111,11 @@ const AudioPlayer = () => {
     return (
         <div className="playbar-component">
             {musicCover}
+            {/* <img
+                className="playbar-musicCover"
+                src={SongCover}
+                alt="Album cover"
+            /> */}
             <div>
                 <div className="playbar-title-container">
                     <div className="playbar-title">
@@ -167,7 +178,7 @@ const AudioPlayer = () => {
                 <div className="playbar-time">
                     <>
                         {/* {currTime.min}:{currTime.sec} */}
-                        <p>{Math.floor(trackProgress)}</p>
+                        <p>{Math.floor(trackProgress/60)}:{Math.floor(trackProgress%60)}</p>
                     </>
                     <input
                         type="range"
@@ -179,22 +190,22 @@ const AudioPlayer = () => {
                         className="playbar-timeline"
                         defaultValue="30"
                         color="secondary"
-                        
+
                     />
-                    <audio src={currentSong.song} ref={audioRef} ></audio>
+                    <audio src={currentSong.song.song} ref={audioRef} ></audio>
                     <>
-                        <p>{Math.floor(duration)}</p>
+                        <p>{Math.floor(duration/60)}:{Math.floor(duration%60)}</p>
                     </>
                 </div>
             </div>
             <div className="playBar-volume-group">
                 {!mute ? (
                     <div className="playBar-setVolume">
-                        <IoMdVolumeHigh style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }}/>
+                        <IoMdVolumeHigh style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }} />
                     </div>
                 ) : (
                     <div className="playBar-setVolume">
-                        <IoMdVolumeOff style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }}/>
+                        <IoMdVolumeOff style={{ color: '#1db954', fontSize: '1.5em', background: 'none' }} />
                     </div>
                 )}
                 <input
