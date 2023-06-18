@@ -7,16 +7,22 @@ import axios from "axios"
 import * as actions from "../redux/auth/auth"
 import { useSelector, useDispatch } from "react-redux";
 
-function SidebarPlaylist({ playlistName }) {
-    function clickedButton() {
-        console.log("CLICKED PLAYLIST");
+import { useNavigate } from "react-router-dom";
+
+function SidebarPlaylist({ k, playlistName }) {
+    const navigate = useNavigate();
+    // console.log(k);
+    function clickedButton(k) {
+        // console.log(k)
+        // console.log("CLICKED PLAYLIST");
+        navigate('/playlist?playlistId=' + k);
     }
 
     return (
         <div className="sidebar-playlist">
             <span
                 className="sidebar-playlist-name"
-                onClick={clickedButton}
+                onClick={() => clickedButton(k)}
             >
                 {playlistName}
             </span>
@@ -42,6 +48,7 @@ const SideBar = () => {
             try {
                 const response = await axios.get(apiUrl + '/playlist');
                 if (Array.isArray(response.data.data)) {
+                    // console.log(response.data.data);
                     setPlaylists(response.data.data);
                 } else {
                     console.error('Invalid response data:', response.data.data);
@@ -59,9 +66,6 @@ const SideBar = () => {
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
     };
-
-
-
 
     return (
         <>
@@ -82,6 +86,7 @@ const SideBar = () => {
 
                         {playlists.map((playlist) => (
                             <SidebarPlaylist
+                                k={playlist._id}
                                 key={playlist._id}
                                 playlistName={playlist.name}
                             />

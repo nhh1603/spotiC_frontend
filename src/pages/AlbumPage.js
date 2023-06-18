@@ -128,6 +128,7 @@ export default function Album() {
         const response = await axios.get(apiUrl + '/song/album/' + queryValue);
         if (Array.isArray(response.data.data)) {
           setSongs(response.data.data);
+          console.log(response.data.data)
         } else {
           console.error('Invalid response data:', response.data.data);
         }

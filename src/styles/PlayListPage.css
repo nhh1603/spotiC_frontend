@@ -4,6 +4,7 @@ body {
   color: white;
   margin: 0;
   padding: 0;
+  margin-bottom: 110px;
 }
 
 .playlist {
@@ -44,15 +45,22 @@ body {
   z-index: 1;
 }
 
-.playlist_song:hover .album_song_index {
+.playlist_song:hover .playlist_song_index {
   opacity: 0;
 }
 
-.playlist_artist_name {
+.playlist_artist_name_year_song {
   padding-left: 3px;
   font-size: 1.5rem;
   line-height: 2;
   margin-top: 4px;
+}
+
+.playlist_artist_name {
+  display: inline-block;
+  box-sizing: border-box;
+  color: var(--text-base, white);
+  text-decoration: none; /* Remove the underline */
 }
 
 .playlist_song_header {
@@ -183,7 +191,7 @@ h5.non-bold {
   padding-right: 60px;
 }
 
-.playlist_other_album_container {
+.playlist_other_playlist_container {
   display: flex;
   justify-content: flex-start;
   margin-top: 10px;
@@ -192,7 +200,7 @@ h5.non-bold {
   overflow: auto;
 }
 
-.playlist_other_album {
+.playlist_other_playlist {
   background: #181818;
   border: 1px solid #181818;
   font-size: 24px;
@@ -205,11 +213,11 @@ h5.non-bold {
   padding-bottom: 25px;
 }
 
-.playlist_other_album:hover {
+.playlist_other_playlist:hover {
   background-color: #3b3b3b;
 }
 
-.playlist_other_album_name {
+.playlist_other_playlist_name {
   display: inline-block;
   box-sizing: border-box;
   margin: 5px 0;
@@ -219,7 +227,7 @@ h5.non-bold {
   text-decoration: none; /* Remove the underline */
 }
 
-.playlist_other_album_year {
+.playlist_other_playlist_year {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   margin: 5px 0;
@@ -231,7 +239,7 @@ h5.non-bold {
 }
 
 
-.album_other_playlist_img {
+.playlist_other_playlist_img {
   height: 200px;
   width: 200px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -242,4 +250,10 @@ h5.non-bold {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+}
+.playlist-home-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  height: calc(100vh - 110px);
 }
