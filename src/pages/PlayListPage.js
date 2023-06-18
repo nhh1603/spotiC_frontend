@@ -68,7 +68,7 @@ function PlayListHead({
   // playlistTotalSong
 }) {
   const [scrollPosition, setScrollPosition] = useState(0);
-
+  console.log(playListName)
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -182,7 +182,7 @@ export default function PlayListPage() {
     };
 
     fetchData();
-  }, []); 
+  }, [queryValue]); 
 
   const [otherPlayLists, setOtherPlayLists] = useState([]);
 
