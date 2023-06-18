@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-function Album({ albumImgUrl,albumId, albumName, albumYear }) {
+function Album({ album }) {
+
+  const albumImgUrl=album.cover 
+  const albumName=album.name
+  const albumId=album._id
+  const albumYear=album.year 
+        
+
+
   function clickedButton() {
     console.log("CLICKED ALBUM");
   }
