@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios"
 
 import * as actions from "../redux/auth/auth"
+import { setCurrentSong } from "../redux/audioPlayer/audioPlayer";
 import { useSelector, useDispatch } from "react-redux";
 
 function SidebarPlaylist({ playlistName }) {
@@ -35,6 +36,7 @@ const SideBar = () => {
     const handleLogout = async () => {
         dispatch(actions.logout());
         // window.location = "/";
+        // dispatch(setCurrentSong(null));
     };  
 
     useEffect(() => {
