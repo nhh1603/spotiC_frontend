@@ -1,120 +1,101 @@
+
 .sidebar-open {
-    transform: translateX(0);
-    background: #191414;
-    color: #fff;
-    min-width: 200px;
-    width: 250px;
-    transition: transform 0.3s ease;
-    z-index: 100;
-    /* display: flex; */
+  transform: translateX(0);
+  background: #191414;
+  color: #fff;
+  min-width: 200px;
+  width: 250px;
+  transition: transform 0.3s ease;
+  z-index: 100;
 }
 
 .menu-icon {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    padding: 15px;
-    color: white;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 15px;
+  color: white;
 }
 
 .menu-icon span {
-    height: 3px;
-    width: 25px;
-    background-color: white;
-    margin-bottom: 5px;
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin-bottom: 5px;
 }
 
 .sidebar-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100%;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px; 
+  height: 100%; 
+  z-index: 1;
 }
 
 .main-content {
-    flex-grow: 1;
-    background-color: #191414;
-    color: white;
-    overflow: auto;
-    transition: padding 0.3s ease;
-    padding: 30px;
+  flex-grow: 1;
+  background-color: #191414;
+  color: white;
+  overflow: auto;
+  transition: padding 0.3s ease;
+  padding: 30px;
 }
 
-.album-main-content {
-    flex-grow: 1;
-    background-color: #191414;
-    color: white;
-    overflow: auto;
-    transition: padding 0.3s ease;
-}
-
-.album-main-content::-webkit-scrollbar {
-    width: 10px;
-}
-
-.album-main-content::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
-    transition: background-color 0.3s ease;
-}
-
-.album-main-content::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+.album-main-content{
+  flex-grow: 1;
+  background-color: #191414;
+  color: white;
+  overflow: auto;
+  transition: padding 0.3s ease;
+  
 }
 
 .sidebar-open .main-content {
-    padding-left: 230px;
+  padding-left: 230px;
 }
 
 .playlist-line {
-    height: 1px;
-    width: 180px;
-    background-color: var(--text-subdued, #6a6a6a);
-    margin-left: 20px;
-    margin-top: 30px;
-    margin-bottom: 20px;
+  height: 1px;
+  width: 180px;
+  background-color: var(--text-subdued, #6a6a6a);
+  margin-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
-.sidebar-playlist {
-    margin: 10px;
-    margin-bottom: 20px;
-    padding-left: 10px;
+.sidebar-playlist{
+  margin: 10px;
+  margin-bottom: 20px;
+  padding-left: 10px;
 }
 
-.sidebar-playlist-name {
-    text-align: left;
-    text-decoration: none;
-    box-sizing: border-box;
-    font-size: 1.125rem;
-    font-weight: 400;
-    color: var(--text-subdued, #6a6a6a);
+.sidebar-playlist-name{
+  text-align: left;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--text-subdued, #6a6a6a);
+}
+.sidebar-playlist-name:hover{
+  color: white;
 }
 
-.sidebar-playlist-name:hover {
-    color: white;
-}
-
-.sidebar-element {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-subdued, #6a6a6a);
-    margin: 10px;
-    padding-left: 10px;
+.sidebar-element{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-subdued, #6a6a6a);
+  margin: 10px;
+  padding-left: 10px;
 }
 
 .sidebar-element-href {
-    display: block;
-    padding-bottom: 0.5px;
-    box-sizing: border-box;
-    text-decoration: none;
-    /* Remove the underline */
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none; /* Remove the underline */
 }
 
-.sidebar-element:hover {
-    color: white;
-}
-
-.sidebar {
-    display: flex;
+.sidebar-element:hover{
+  color: white;
 }

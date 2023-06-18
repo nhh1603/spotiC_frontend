@@ -4,6 +4,7 @@ body {
   color: white;
   margin: 0;
   padding: 0;
+  margin-bottom: 110px;
 }
 
 .album {
@@ -48,11 +49,18 @@ body {
   opacity: 0;
 }
 
-.album_artist_name {
+.album_artist_name_year_song {
   padding-left: 3px;
   font-size: 1.5rem;
   line-height: 2;
   margin-top: 4px;
+}
+
+.album_artist_name {
+  display: inline-block;
+  box-sizing: border-box;
+  color: var(--text-base, white);
+  text-decoration: none; /* Remove the underline */
 }
 
 .album_song_header {
@@ -242,4 +250,10 @@ h5.non-bold {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+}
+.album-home-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  height: calc(100vh - 110px);
 }
