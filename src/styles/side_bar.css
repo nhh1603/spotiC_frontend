@@ -91,7 +91,8 @@
 }
 
 .sidebar-element-href {
-  display: inline-block;
+  display: block;
+  padding-bottom: 0.05px;
   box-sizing: border-box;
   text-decoration: none; /* Remove the underline */
 }

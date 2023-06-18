@@ -24,6 +24,9 @@ body {
   align-items: center;
 }
 
+.home_song_container::-webkit-scrollbar {
+  display: none;
+}
 
 .home_song_info_container {
   display: flex;
@@ -92,6 +95,10 @@ body {
   margin-top: 10px;
   margin-bottom: 16px;
   overflow: auto;
+}
+
+.home_artist_container::-webkit-scrollbar {
+  display: none;
 }
 
 .home_artist {
