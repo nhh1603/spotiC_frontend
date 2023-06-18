@@ -23,7 +23,7 @@ function HomeSong({ song }) {
 
     function clickedButton() {
         console.log("CLICKED SONG");
-        dispatch(setCurrentSong({ song: songURL, action: "play" }));
+        dispatch(setCurrentSong({ song: song, action: "play" }));
     }
 
   const [isHovered, setIsHovered] = useState(false);
