@@ -3,12 +3,8 @@ body {
   background-color: #191414;
   color: white;
   margin: 0;
-  /* margin-bottom: 13%; */
   padding: 0;
-}
-
-.home-container {
-    margin-bottom: 13%;
+   margin-bottom: 110px;
 }
 
 .artist {
@@ -26,6 +22,8 @@ body {
   justify-content: flex-end;
   z-index: 0;
 }
+
+
 
 .song_index{
 	margin-right: 8px;
@@ -81,9 +79,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 0;
-  padding: 0;
-  z-index: -1;
+
 }
 
 .artist_info {
@@ -118,33 +114,17 @@ body {
   padding-left: 40px;
 }
 
-.artist_song_container {
-  margin-top: 10px;
-  margin-bottom: 16px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
 
-.artist_song {
-  background: #181818;
-  font-size: 20px;
-  font-weight: bold;
-  width: 100%;
-  margin: 15px;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
 
 
 .artist_song:hover .play-icon {
   position: absolute;
   top: 50%;
-  left: 30px;
+  left: 20px;
   transform: translate(-50%, -50%);
   font-size: 24px;
   color: white;
-  z-index: 1;
+  z-index: 2;
 }
 
 .artist_song:hover .song_index {
@@ -195,6 +175,27 @@ body {
   overflow: auto;
 }
 
+.artist_song_container {
+  margin-top: 10px;
+  margin-bottom: 16px;
+  padding-left: 50px;
+  padding-right: 50px;
+  overflow: auto;  
+}
+
+
+.artist_song {
+  background: #181818;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
 .artist_album {
   background: #181818;
   border: 1px solid #181818;
@@ -241,15 +242,11 @@ body {
 }
 
 
-.artist-page-container {
+
+.artist-home-container {
   display: flex;
   width: 100%;
-  height: 100vh;
   overflow: hidden;
-  position: relative;
+  height: calc(100vh - 110px);
 }
 
-.artist {
-  position: relative;
-  z-index: 0;
-}

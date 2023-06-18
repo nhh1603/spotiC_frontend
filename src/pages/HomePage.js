@@ -1,10 +1,11 @@
 import React, {useState} from "react"
-import "../styles/HomePage.css";
+import "../styles/home_styles.css";
+import SideBar from "../components/SideBarComponent"
 import axios from "axios"
-import SideBar from "../components/Side_bar"
-import SearchBar from "../components/Search_bar";
 import {useEffect} from "react"
 import { FaPlayCircle } from 'react-icons/fa';
+import Artist from "../components/ArtistComponent"
+
 
 
 function HomeSong({ songImgUrl, artistId, songName, artistName }) {
@@ -46,31 +47,6 @@ function HomeSong({ songImgUrl, artistId, songName, artistName }) {
   );
 }
 
-function HomeArtist({artistId, artistImgUrl, artistGenre, artistName }) {
-  function clickedButton() {
-    console.log("CLICKED ARTIST");
-  }
-
-  return (
-  <a href={"/artist?artistId="+artistId}>
-    <div className="home_artist">
-      <img
-        className="home_artist_img"
-        src={artistImgUrl}
-        alt=""
-        onClick={clickedButton}
-      />
-      <div>
-        <span className="home_artist_name"> 
-          {artistName}
-        </span>
-        <br />
-        <span className="home_artist_genre">{artistGenre}</span>
-      </div>
-    </div>
-  </a>
-  );
-}
 
 
 
@@ -78,6 +54,7 @@ function HomeArtist({artistId, artistImgUrl, artistGenre, artistName }) {
 export default function Home() {
 
   const apiUrl = process.env.REACT_APP_API_URL;
+  
 
   const [artists, setArtists] = useState([]);
 
@@ -126,7 +103,6 @@ export default function Home() {
         <SideBar />
       </div>
       <div className="main-content">
-        <SearchBar />
         <div>
           <h1 className="home_title">Top songs</h1>
           <div className="home_song_container">
@@ -146,7 +122,7 @@ export default function Home() {
           <h1 className="home_title">Top artists</h1>
           <div className="home_artist_container">
             {artists.map((artist) => (
-              <HomeArtist
+              <Artist
                 key={artist._id}
                 artistId={artist._id.toString()}
                 artistImgUrl={artist.cover}

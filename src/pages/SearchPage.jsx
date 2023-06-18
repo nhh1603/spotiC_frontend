@@ -5,11 +5,13 @@ import axiosInstance from "../redux/axiosInstance";
 import { IconButton, CircularProgress } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
-import SideBar from "../components/Side_bar";
-import SearchBar from "../components/Search_bar";
+import SideBar from "../components/SideBarComponent";
+import SearchBar from "../components/SearchBarComponent";
 import "../styles/SearchPage.css";
 
 import Song from "../components/SongComponent";
+import Album from "../components/AlbumComponent";
+import Artist from "../components/ArtistComponent";
 
 const SearchPage = () => {
     const [search, setSearch] = useState("");
@@ -29,8 +31,13 @@ const SearchPage = () => {
 
     return (
         <div className="search-container">
+            <div>
+                <SideBar />
+            </div>
+
+            <div className="main-content">
             <div className="search-input-container">
-                <SearchIcon />
+                
                 <input
                     className="search-input"
                     type="search"
@@ -38,6 +45,7 @@ const SearchPage = () => {
                     onChange={handleSearch}
                     value={search}
                 />
+                <SearchIcon style={{"padding-left": "20px"}}/>
             </div>
 
             {Object.keys(results).length > 0 && (
@@ -49,12 +57,54 @@ const SearchPage = () => {
                                 {results.songs.map((song, index) => (
                                     <Song song= {song.song} songImgUrl={song.cover} index={index+1} songName={song.name} songHits={song.listenTimes} songLength={song.duration} />
                                 ))}
+                                
                             </div>
                         </div>
                     )}
-                    {/* {results.artists.length > 0 && ( */}
+
+                    {results.albums.length > 0 && (
+                        
+                            <div>
+                            <h2 className="search-results-section-title">Albums</h2>
+                            <div className="artist_album_container">
+                                {results.albums.map((album, index) => (
+                                    <Album 
+                                        albumImgUrl={album.cover} 
+                                        index={index+1} 
+                                        albumName={album.name} 
+                                        albumId={album._id} 
+                                        albumYear={album.year} 
+                                        key={album._id}
+                                    />
+                                ))}    
+                        </div>
+                        </div>
+                    )}
+
+                    {results.artists.length > 0 && (
+                        
+                        <div>
+                        <h2 className="search-results-section-title">Artists</h2>
+                        <div className="artist_album_container">
+                            {results.artists.map((artist, index) => (
+                                <Artist 
+                                    artistImgUrl={artist.cover} 
+                                    index={index+1} 
+                                    artistName={artist.name} 
+                                    artistId={artist._id}
+                                    artistGenre={artist.genre} 
+                                    key={artist._id}
+
+                                   
+                                />
+                            ))}    
+                    </div>
+                    </div>
+                )}
+                   
                 </div>
             )}
+            </div>
         </div>
     );
 };
