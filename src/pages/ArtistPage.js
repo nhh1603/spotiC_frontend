@@ -2,7 +2,7 @@ import "../styles/artist_styles.css";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios"
-import SideBar from "../components/Side_bar"
+import SideBar from "../components/SideBarComponent";
 import { FaPlay } from 'react-icons/fa';
 
 function ArtistSong({ songImgUrl,index, songName, songHits, songLength }) {
