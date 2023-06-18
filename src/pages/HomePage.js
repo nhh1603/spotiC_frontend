@@ -6,19 +6,34 @@ import {useEffect} from "react"
 import { FaPlayCircle } from 'react-icons/fa';
 import Artist from "../components/ArtistComponent"
 
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentSong } from "../redux/audioPlayer/audioPlayer";
 
 
-function HomeSong({ songImgUrl, artistId, songName, artistName }) {
-  function clickedButton() {
-    console.log("CLICKED SONG");
-  }
+
+function HomeSong({ song }) {
+  const songImgUrl=song.cover
+  const songName=song.name
+  const artistName=song.artistName
+  const artistId=song.artistId
+  const songURL= song.song 
+
+  const { currentSong } = useSelector((state) => state.audioPlayer);
+    const dispatch = useDispatch();
+
+    function clickedButton() {
+        console.log("CLICKED SONG");
+        dispatch(setCurrentSong({ song: songURL, action: "play" }));
+    }
+
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div 
       className="home_song"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)} >
+      onMouseLeave={() => setIsHovered(false)} 
+      >
       <img
         className="home_song_img"
         src={songImgUrl}
@@ -36,7 +51,7 @@ function HomeSong({ songImgUrl, artistId, songName, artistName }) {
         </div>
 
         {isHovered && (
-          <div className="play-icon">
+          <div className="play-icon" onClick={clickedButton}>
             
           <FaPlayCircle/>
           </div>
@@ -107,13 +122,7 @@ export default function Home() {
           <h1 className="home_title">Top songs</h1>
           <div className="home_song_container">
             {songs.map((song) => (
-              <HomeSong
-                key={song._id}
-                songImgUrl={song.cover}
-                songName={song.name}
-                artistName={song.artistName}
-                artistId={song.artistId}
-              />
+              <HomeSong key={song._id} song={song} />
             ))}
           </div>
         </div>
