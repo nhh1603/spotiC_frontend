@@ -6,10 +6,24 @@ import SideBar from "../components/SideBarComponent"
 import { FaPlay } from 'react-icons/fa';
 import Album from "../components/AlbumComponent";
 
-function AlbumSong({ songName, index, songHits, songLength }) {
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentSong } from "../redux/audioPlayer/audioPlayer";
+
+function AlbumSong({ song, index}) {
+
+  const songName=song.name
+  const songHits=song.listenTimes
+  const songLength=song.duration
+  const songURL=song.song
+
+  const { currentSong } = useSelector((state) => state.audioPlayer);
+  const dispatch = useDispatch();
+
   function clickedButton() {
-    console.log("CLICKED SONG");
+      console.log("CLICKED SONG");
+      dispatch(setCurrentSong({ song: songURL, action: "play" }));
   }
+
   const [isHovered, setIsHovered] = useState(false);
   const formattedHits = parseInt(songHits).toLocaleString();
   return (
@@ -210,12 +224,7 @@ export default function AlbumPage() {
 
         <div className="album_song_container">
           {songs.map((song, index) => (
-            <AlbumSong
-              key={song._id}
-              index={index+1}
-              songName={song.name}
-              songHits={song.listenTimes}
-              songLength={song.duration}
+            <AlbumSong key={song._id} index={index+1} song={song}
             />
           ))}
         </div>
