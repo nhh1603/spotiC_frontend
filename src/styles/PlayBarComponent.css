@@ -12,6 +12,7 @@
     padding: 0 1%;
     /* color: #82aacb; */
     z-index: 1000;
+    font-size: 13px;
 }
 
 .playbar-musicCover {
@@ -22,7 +23,7 @@
 }
 
 .playbar-title-container {
-    margin-left: 1em;
+    margin-left: 1.8em;
     width: 8.2em;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -30,16 +31,16 @@
 }
 
 .playbar-title-container h3 {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: 700;
 }
 
 .playbar-title-container p {
-    font-size: 1em;
+    font-size: 1.2em;
 }
 
 .playbar-title {
-    margin-top: 1.8em;
+    margin-top: 0.8em;
     text-align: center;
     color: #82aacb;
     font-weight: bold;
@@ -52,11 +53,7 @@
 .playbar-subtitle {
     color: #625e5e;
     text-align: center;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
+    margin-top: -1.5em;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -72,7 +69,7 @@
     border: none;
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 20%;
     transform: translateX(-50%);
 }
 
@@ -100,9 +97,10 @@
 .playbar-timeContainer {
     position: absolute;
     left: 35%;
-    top: 65%;
+    top: 60%;
     transform: translateX(-50%);
-
+    width: 14em;
+    text-align: center;
 }
 
 .playbar-timeContainer p {
@@ -128,8 +126,10 @@ input[type="range"] {
 }
 
 .playBar-volume-group {
+    top: 50%;
+    width: 5em;
     position: absolute;
-    right: 1em;
+    right: 12em;
     display: flex;
     align-items: center;
 }
