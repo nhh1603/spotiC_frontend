@@ -1,11 +1,15 @@
 .signin-wapper{
-    transform: translate(0, 30%);
+    transform: translate(0, 10%);
     margin-top: 30px;
+}
+
+html::-webkit-scrollbar {
+    display: none;
 }
 
 .signin-container {
     color: white;
-    transform: scale(1.15);
+    transform: scale(1.10);
     
     display: flex;
     flex-direction: column;
@@ -19,7 +23,7 @@
 
 .signin-container .signin-logo h1 {
     display: inline-block;
-    transform: translate(0, 5px);
+    transform: translate(0, -11px);
     margin-left: 5px;
     font-weight: 700;
     color: var(--spotify-green);
@@ -31,7 +35,7 @@
 
 .signup-container .signup-logo h1 {
     display: inline-block;
-    transform: translate(0, 5px);
+    transform: translate(0, -11px);
     margin-left: 5px;
     font-weight: 700;
     color: var(--spotify-green);
@@ -69,6 +73,7 @@
 
 .signin-form-input {
     margin-bottom: 10px;
+    display: table-caption;
 }
 
 .signin-form-input input {
@@ -79,7 +84,7 @@
     padding-left: 10px;
     padding-bottom: 5px;
     font-size: 14px;
-
+    display: table-caption;
 }
 
 .signin-container .error {

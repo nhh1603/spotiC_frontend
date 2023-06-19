@@ -9,7 +9,7 @@ import Album from "../components/AlbumComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentSong } from "../redux/audioPlayer/audioPlayer";
 
-function AlbumSong({ song, index}) {
+function AlbumSong({ song, index }) {
 
   const songName=song.name
   const songHits=song.listenTimes
@@ -21,7 +21,7 @@ function AlbumSong({ song, index}) {
 
   function clickedButton() {
       console.log("CLICKED SONG");
-      dispatch(setCurrentSong({ song: songURL, action: "play" }));
+      dispatch(setCurrentSong({ ...currentSong, song: song, action: "play", trackProgress: 0 }));
   }
 
   const [isHovered, setIsHovered] = useState(false);

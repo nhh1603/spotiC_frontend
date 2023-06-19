@@ -183,6 +183,9 @@ body {
   overflow: auto;  
 }
 
+.artist_song_container::-webkit-scrollbar {
+  display: none;
+}
 
 .artist_song {
   background: #181818;
