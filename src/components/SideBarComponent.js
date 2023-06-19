@@ -35,8 +35,8 @@ const SideBar = () => {
 
     const handleLogout = async () => {
         dispatch(actions.logout());
-        // window.location = "/";
-        // dispatch(setCurrentSong(null));
+        window.location = "/";
+        dispatch(setCurrentSong({ song: null, action: "pause", volume: 30, trackProgress: 0 }));
     };  
 
     useEffect(() => {
