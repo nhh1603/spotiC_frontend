@@ -238,7 +238,7 @@ export default function PlayListPage() {
             <div className="playlist_song_header_item">
               <div className="playlist_song_header_title">TITLE</div>
               <div className="playlist_song_header_artist">ARTIST</div>
-              <div className="playlist_song_header_length">LENGTH</div>
+              {/* <div className="playlist_song_header_length">LENGTH</div> */}
             </div>
           </div>
 
